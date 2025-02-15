@@ -1,0 +1,120 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #000;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 20px;
+    margin: 0; 
+    height: 100%; 
+    overflow: hidden
+}
+
+#countdown {
+    text-align: center;
+    width: 100%;
+    max-width: 600px;
+}
+
+h1 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+}
+
+#timer {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 15px;
+    font-size: 3em;
+    justify-content: center;
+    align-items: center;
+}
+
+.flip-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.flip-card {
+    position: relative;
+    width: 100%;
+    max-width: 100px;
+    height: 120px;
+    perspective: 1000px;
+    transform-style: preserve-3d;
+}
+
+.card-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #333;
+    border-radius: 5px;
+    overflow: hidden;
+    font-size: 100%;
+    backface-visibility: hidden;
+}
+
+.front {
+    transform: rotateX(0deg);
+    z-index: 2;
+}
+
+.back {
+    transform: rotateX(180deg);
+    z-index: 1;
+}
+
+.flip-card.flip .front {
+    animation: flip-front 0.5s ease-in-out forwards;
+}
+
+.flip-card.flip .back {
+    animation: flip-back 0.5s ease-in-out forwards;
+}
+
+@keyframes flip-front {
+    0% {
+        transform: rotateX(0deg);
+    }
+    100% {
+        transform: rotateX(-180deg);
+    }
+}
+
+@keyframes flip-back {
+    0% {
+        transform: rotateX(180deg);
+    }
+    100% {
+        transform: rotateX(0deg);
+    }
+}
+
+.label {
+    font-size: 0.6em;
+    margin-top: 10px;
+    color: #aaa;
+}
+
+/* 🔹 Responsividade para telas menores */
+@media (max-width: 500px) {
+    #timer {
+        font-size: 2em;
+        gap: 10px;
+    }
+
+    .flip-card {
+        height: 90px;
+    }
+
+    h1 {
+        font-size: 1.5em;
+    }
+}
